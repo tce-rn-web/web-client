@@ -21,6 +21,7 @@ Modelagem do Banco
 	pedidos
 		campos
 			id
+			mesa (string)
 			descricao
 			status
 			data_do_pedido (datatime)
@@ -35,9 +36,8 @@ Modelagem do Banco
 	usuarios
 		campos
 			id
-			username
-			name
 			email
+			name
 			senha
 
 	permissoes
@@ -55,26 +55,49 @@ Modelagem do Banco
 			id_user
 			id_permissao
 
-
 Telas
 	anonimo
 		Cadastro
 		Login
+		About
 
 	funcionario
-		Pratos
+		Cadastrar Pratos
+		Lista de Pratos (registrar ação)
 		Logout
 
 	dono
 		Cadastro
-		Cadastro de Pratos
-		Listar Pratos
-		Receitas
-		Logs
+		*Cadastro de Pratos
+		Listar Pratos (editar/remover)
+		*Receitas
+		*Logs
 		Logout
 
 Consultas
+	Metódo: POST
+	Rota: api/cadastro
+	Parametros: Usuario
 
+	Metódo: POST
+	Rota: api/login
+	Parametros: Usuario
+
+	Metódo: GET
+	Rota: api/pedido/listar
+	Parametros: ?status
+
+	Metódo: POST
+	Rota: api/pedido/cadastrar
+	Parametros: Pedido
+
+	Metódo: PUT
+	Rota: api/pedido/editar
+	Parametros: Pedido
+
+	Metódo: DELETE
+	Rota: api/pedido/deletar
+	Parametros: Pedido
 -------------------------------------------------
 Requisitos
 	Área administrativa para gerenciar usuários
