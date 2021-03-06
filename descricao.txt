@@ -23,7 +23,7 @@ Modelagem do Banco
 			id
 			mesa (string)
 			descricao
-			status
+			id_status (int)
 			data_do_pedido (datatime)
 
 		tipos de estados
@@ -32,6 +32,11 @@ Modelagem do Banco
 			preparando
 			entregue
 			finalizado
+
+	status_pedido
+		campos
+			id_status
+			nome
 
 	usuarios
 		campos
