@@ -44,6 +44,7 @@ Modelagem do Banco
 		campos
 			id
 			descricao
+
 		exemplos de permissões
 			cadastrar pedidos
 			cancelar pedidos
@@ -62,8 +63,8 @@ Telas
 		About
 
 	funcionario
-		Cadastrar Pratos
-		Lista de Pratos (registrar ação)
+		Cadastrar Pedido
+		Lista de Pedido (registrar ação)
 		Logout
 
 	dono
