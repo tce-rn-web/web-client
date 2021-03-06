@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="">Rede Social Genérica</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" [attr.aria-expanded]="!isCollapsed" (click)="isCollapsed = !isCollapsed" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav" [ngClass]="{'show': !isCollapsed}">
+        <ul class="navbar-nav">
+          <li class="nav-item" *ngIf="app.login">
+            <a class="nav-link" routerLink="post" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Post</a>
+          </li>
+          <li class="nav-item" *ngIf="app.login">
+            <a class="nav-link" aria-current="page" routerLink="home" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Home</a>
+          </li>
+          <li class="nav-item" *ngIf="app.login">
+            <a class="nav-link" routerLink="profile" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Profile</a>
+          </li>
+          <li class="nav-item" *ngIf="app.login">
+            <a class="nav-link" routerLink="friends" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Friends</a>
+          </li>
+          <li class="nav-item" *ngIf="!app.login">
+            <a class="nav-link" routerLink="login" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="!app.login">
+            <a class="nav-link" routerLink="signup" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">SignUp</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="about" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">About</a>
+          </li>
+          <li class="nav-item" *ngIf="app.login">
+            <a class="nav-link" routerLink="quit" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
