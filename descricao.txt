@@ -1,0 +1,91 @@
+Eu estava pensando o sistema de acordo com os papéis dos funcionários, quando percebi que, em alguns restaurantes, o garçom quem cobra a conta, já em outros, tem um atendente para isso. Então pensei em não separar os tipos de funcionários, mas as funções deles
+No caso, os funcionários poderiam ter as funções:
+   - Cadastrar pedidos
+   - Cancelar pedidos
+   - Preparar pedidos
+   - Cobrar pedidos
+Daí o dono quem atribuiria as funções a eles
+-------------------------------------------------
+Modelagem do Banco
+	pratos
+		campos
+			id
+			descricao
+			preco
+
+	pedidos_pratos
+		campos
+			id_pedido
+			id_prato
+
+	pedidos
+		campos
+			id
+			descricao
+			status
+			data_do_pedido (datatime)
+
+		tipos de estados
+			cadastrado
+			cancelado
+			preparando
+			entregue
+			finalizado
+
+	usuarios
+		campos
+			id
+			username
+			name
+			email
+			senha
+
+	permissoes
+		campos
+			id
+			descricao
+		exemplos de permissões
+			cadastrar pedidos
+			cancelar pedidos
+			preparar pedidos
+			cobrar pedidos
+
+	usuarios_permissoes
+		campos
+			id_user
+			id_permissao
+
+
+Telas
+	anonimo
+		Cadastro
+		Login
+
+	funcionario
+		Pratos
+		Logout
+
+	dono
+		Cadastro
+		Cadastro de Pratos
+		Listar Pratos
+		Receitas
+		Logs
+		Logout
+
+Consultas
+
+-------------------------------------------------
+Requisitos
+	Área administrativa para gerenciar usuários
+	Rotas protegidas
+	Login/Logout
+	Montar as telas/menus do sistema de acordo com permissões
+	CRUD
+	Busca
+	Relatório
+	Logs
+	Fedback de erros e sucesso ao usário
+	Validação de formulário frontend
+	Validação de formulário backend
+	Responsividade
