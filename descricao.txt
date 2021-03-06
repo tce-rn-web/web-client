@@ -10,7 +10,7 @@ Modelagem do Banco
 	pratos
 		campos
 			id
-			descricao
+			nome
 			preco
 
 	pedidos_pratos
@@ -37,7 +37,7 @@ Modelagem do Banco
 		campos
 			id
 			email
-			name
+			nome
 			senha
 
 	permissoes
@@ -68,9 +68,9 @@ Telas
 		Logout
 
 	dono
-		Cadastro
-		*Cadastro de Pratos
-		Listar Pratos (editar/remover)
+		Cadastrar Funcionário
+		*Cadastrar Pratos
+		*Listar Pratos (editar/remover)
 		*Receitas
 		*Logs
 		Logout
