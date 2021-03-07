@@ -11,10 +11,9 @@ import { HeaderComponent } from './header/header.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { LoginComponent } from './login/login.component';
 import { SobreComponent } from './sobre/sobre.component';
-import { ProfileComponent } from './profile/profile.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 import { FriendsComponent } from './friends/friends.component';
 import { QuitComponent } from './quit/quit.component';
-import { MessageComponent } from './message/message.component';
 import { UserComponent } from './user/user.component';
 import { PostComponent } from './post/post.component';
 
@@ -25,10 +24,9 @@ import { PostComponent } from './post/post.component';
     CadastroComponent,
     LoginComponent,
     SobreComponent,
-    ProfileComponent,
+    PedidosComponent,
     FriendsComponent,
     QuitComponent,
-    MessageComponent,
     UserComponent,
     PostComponent
   ],
