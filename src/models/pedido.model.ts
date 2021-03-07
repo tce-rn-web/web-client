@@ -11,4 +11,24 @@ export class Pedido {
         public estado: EstadoPedido,
         public dataDoPedido: string
     ) {}
+
+    qtdTotal(): number {
+        let qtd: number = 0
+
+        this.pedidosPratos.forEach((prato) => {
+            qtd += prato.quantidade
+        })
+
+        return qtd
+    }
+
+    precoTotal(): number {
+        let preco: number = 0
+
+        this.pedidosPratos.forEach((prato) => {
+            preco += prato.quantidade * prato.prato.preco
+        })
+
+        return preco
+    }
 }
