@@ -12,7 +12,7 @@ export class QuitComponent implements OnInit {
   constructor(public app: AppService, public router: Router) { }
 
   ngOnInit(): void {
-    this.app.login = false
+    this.app.permissao = 'anonimo'
     this.router.navigate(['login'])
   }
 

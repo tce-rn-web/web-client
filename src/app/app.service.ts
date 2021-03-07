@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AppService {
-  last: string = 'home'
-  login: boolean = true
+  last: string = 'login'
+  permissao: string = 'funcionario'
 
   constructor() {}
 }

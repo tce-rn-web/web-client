@@ -1,6 +1,6 @@
 <ng-template #template>
     <div class="modal-header">
-        <h5 id="modalPost" class="modal-title pull-left">Sign In</h5>
+        <h5 id="modalPost" class="modal-title pull-left">Login</h5>
         <button type="button" class="close pull-right" aria-label="Close" (click)="onClose()">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -8,13 +8,13 @@
     <div class="modal-body">
         <form>
             <div class="mb-3 pl-2 pr-2">
-                <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="You Username">
-                <!-- <div id="usernameHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="exemplo@gmail.com">
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
             </div>
             <div class="mb-3 pl-2 pr-2">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="You Password">
+                <label for="password" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="password" placeholder="Sua Senha">
             </div>
         </form>
     </div>

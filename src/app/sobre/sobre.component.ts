@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.css']
+  selector: 'app-sobre',
+  templateUrl: './sobre.component.html',
+  styleUrls: ['./sobre.component.css']
 })
-export class AboutComponent implements OnInit {
+export class SobreComponent implements OnInit {
 
   constructor(public app: AppService) { }
 
   ngOnInit(): void {
-    this.app.last = 'about'
+    this.app.last = 'sobre'
   }
 
 }

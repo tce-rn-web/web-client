@@ -6,11 +6,11 @@ import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { AppService } from '../app.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-cadastro',
+  templateUrl: './cadastro.component.html',
+  styleUrls: ['./cadastro.component.css']
 })
-export class SignupComponent implements OnInit {
+export class CadastroComponent implements OnInit {
   @ViewChild('template') private template: TemplateRef<any>
   modalRef: BsModalRef
 
@@ -23,7 +23,7 @@ export class SignupComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.app.last = 'signup'
+    this.app.last = 'cadastro'
   }
 
   ngAfterViewInit(): void {

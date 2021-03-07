@@ -8,6 +8,7 @@ import { AppService } from '../app.service';
 })
 export class HeaderComponent implements OnInit {
 	isCollapsed: boolean = true
+  titulo: string = 'Restaurante'
 
   constructor(public app: AppService) { }
 
