@@ -17,6 +17,7 @@ Modelagem do Banco
 		campos
 			idPedido
 			idPrato
+			quantidade
 
 	pedidos
 		campos
@@ -34,8 +35,10 @@ Modelagem do Banco
 			cadastrado = 1
 			cancelado  = 2
 			preparando = 3
-			entregue   = 4
-			finalizado = 5
+			preparado  = 4
+			entregando = 5
+			entregue   = 6
+			finalizado = 7
 
 	usuarios
 		campos
@@ -43,6 +46,11 @@ Modelagem do Banco
 			email
 			nome
 			senha
+
+	cargo
+		campos
+			idUsuario
+			nome
 
 	permissoes
 		campos

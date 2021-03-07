@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 
+import { EstadoPedido as Estado } from '../../enums/estado_pedido.enum';
 import { Pedido } from '../../models/pedido.model';
 
 @Component({
@@ -10,6 +11,7 @@ import { Pedido } from '../../models/pedido.model';
 })
 export class PedidoComponent implements OnInit {
   @Input() pedido: Pedido
+  estado = Estado
 
   constructor(private app: AppService) { }
 

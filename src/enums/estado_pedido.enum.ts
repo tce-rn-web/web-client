@@ -1,7 +1,9 @@
 export enum EstadoPedido{
-  cadastrado = 1,
-  cancelado  = 2,
-  preparando = 3,
-  entregue   = 4,
-  finalizado = 5,
+  Cadastrado = <any>1,
+  Cancelado  = <any>2,
+  Preparando = <any>3,
+  Preparado  = <any>4,
+  Entregando = <any>5,
+  Entregue   = <any>6,
+  Finalizado = <any>7,
 }
