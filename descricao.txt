@@ -15,28 +15,27 @@ Modelagem do Banco
 
 	pedidos_pratos
 		campos
-			id_pedido
-			id_prato
+			idPedido
+			idPrato
 
 	pedidos
 		campos
 			id
 			mesa (string)
 			descricao
-			id_status (int)
-			data_do_pedido (datatime)
+			idStatus (int)
+			dataDoPedido (datatime)
 
+	status_pedido
+		campos
+			idStatus
+			nome
 		tipos de estados
 			cadastrado
 			cancelado
 			preparando
 			entregue
 			finalizado
-
-	status_pedido
-		campos
-			id_status
-			nome
 
 	usuarios
 		campos
@@ -58,14 +57,25 @@ Modelagem do Banco
 
 	usuarios_permissoes
 		campos
-			id_user
-			id_permissao
+			idUser
+			idPermissao
+
+	logs
+		campos
+			id
+			idUser (int | NULL)
+			acao (string)
+			objeto (string | NULL)
+			campo (string | NULL)
+			valorAntigo (string | NULL)
+			valorNovo (string | NULL)
+			data (datatime)
 
 Telas
 	anonimo
 		Cadastro
 		Login
-		About
+		Sobre
 
 	funcionario
 		Cadastrar Pedido
