@@ -6,7 +6,7 @@ export class Pedido {
         public mesa: string,
         public descricao: string,
         public pratos: Prato[],
-        public idStatus: number,
+        public idEstado: number,
         public dataDoPedido: string
     ) {}
 }

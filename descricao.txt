@@ -23,19 +23,19 @@ Modelagem do Banco
 			id
 			mesa (string)
 			descricao
-			idStatus (int)
+			idEstado (int)
 			dataDoPedido (datatime)
 
-	status_pedido
+	estado_pedido
 		campos
-			idStatus
+			idEstado
 			nome
 		tipos de estados
-			cadastrado
-			cancelado
-			preparando
-			entregue
-			finalizado
+			cadastrado = 1
+			cancelado  = 2
+			preparando = 3
+			entregue   = 4
+			finalizado = 5
 
 	usuarios
 		campos
@@ -57,13 +57,13 @@ Modelagem do Banco
 
 	usuarios_permissoes
 		campos
-			idUser
+			idUsuario
 			idPermissao
 
-	logs
+	log
 		campos
 			id
-			idUser (int | NULL)
+			idUsuario (int | NULL)
 			acao (string)
 			objeto (string | NULL)
 			campo (string | NULL)
