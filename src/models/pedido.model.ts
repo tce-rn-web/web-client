@@ -1,5 +1,6 @@
 import { Prato } from '../models/prato.model';
 import { EstadoPedido } from '../models/estado_pedido.model';
+import { EstadoPedido as Estado } from '../enums/estado_pedido.enum';
 import { PedidoPrato } from '../models/pedido_prato.model';
 
 export class Pedido {
@@ -18,7 +19,7 @@ export class Pedido {
         this.dataDoPedido = dataDoPedido || null
         this.estadoPedido = estadoPedido || null
         this.estadoPedidoId = estadoPedidoId || this.estadoPedido?.id || 0
-        this.pedidosPratos = pedidosPratos || [new PedidoPrato(this)]
+        this.pedidosPratos = pedidosPratos || []
     }
 
     public static qtdTotal(pedido: Pedido): number {
@@ -39,5 +40,24 @@ export class Pedido {
         })
 
         return preco
+    }
+
+    public static DTO(pedido: Pedido): Pedido {
+        let novo = {
+            'mesa': pedido.mesa,
+            'descricao': pedido.descricao,
+            'estadoPedidoId': Estado.Cadastrado,
+            'estadoPedido': new EstadoPedido(null, Estado.Cadastrado, Estado[Estado.Cadastrado]),
+            'pedidosPratos': []
+        }
+
+        pedido.pedidosPratos.forEach((x) => {
+            novo.pedidosPratos.push({
+                'pratoId': x?.prato?.id,
+                'quantidade': x?.quantidade
+            })
+        })
+
+        return novo
     }
 }

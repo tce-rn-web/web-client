@@ -58,6 +58,6 @@ export class CadastroPedidoComponent implements OnInit {
   }
 
   cadastrar(): void {
-    this.app.cadastrarPedido(this.pedido)
+    this.app.cadastrarPedido(this.pedido, this.modalRef)
   }
 }

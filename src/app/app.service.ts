@@ -39,6 +39,7 @@ export class AppService {
   novoPedido(): Pedido {
     let pedido = new Pedido()
     // this.pedidos.unshift(pedido)
+    this.autenticar()
     return pedido
   }
 
@@ -59,7 +60,8 @@ export class AppService {
     EstadoPedido.setEstado(p, estado)
   }
 
-  cadastrarPedido(pedido: Pedido): void {
+  cadastrarPedido(pedido: Pedido, modal?: any): void {
+    pedido = Pedido.DTO(pedido)
     console.log(pedido)
 
     let options = {
@@ -71,7 +73,9 @@ export class AppService {
         (e: any) => {
           console.log(e)
           alert("Cadastrado com sucesso!")
-          this.router.navigate(['pedido/listar'])
+          modal?.hide()
+          this.listar()
+          this.router.navigate(['pedidos/listar'])
         },
         (erro: any) => {
           console.error(erro)
