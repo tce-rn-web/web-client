@@ -6,6 +6,53 @@ No caso, os funcionários poderiam ter as funções:
    - Cobrar pedidos
 Daí o dono quem atribuiria as funções a eles
 -------------------------------------------------
+Nova Modelagem
+	Cargo {
+	    Id: int PK
+	    Descricao: string
+	    Usuarios: Usuario[]
+	}
+
+	EstadoPedido {
+	    Id: int PK
+	    Nome: string
+	    Pedidos: Pedido[]
+	}
+
+	Pedido {
+	    Id: int PK
+	    Mesa: string
+	    Descricao: string
+	    DataDoPedido: DateTime
+	    EstadoPedidoId: int FK(EstadoPedido)
+	    EstadoPedido: EstadoPedido
+	    PedidosPratos: PedidoPrato[]
+	}
+
+	PedidoPrato {
+	    PedidoId: int PK FK(Pedido)
+	    PratoId: int PK FK(Prato)
+	    Quantidade: int
+	    Pedido: Pedido
+	    Prato: Prato
+	}
+
+	Prato {
+	    Id: int PK
+	    Nome: string
+	    Preco: float
+	    PedidosPratos: PedidoPrato
+	}
+
+	Usuario {
+	    Id: int { get; set; }
+	    Email: string
+	    Senha: string
+	    Nome: string
+	    CargoId: int FK(Cargo)
+	    Cargo: Cargo
+	}
+
 Modelagem do Banco
 	pratos
 		campos

@@ -2,15 +2,15 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-4"><h5 class="card-title">Mesa {{ pedido.mesa }}</h5></div>
-            <div class="col-md-3"><h6 class="card-title"><strong>Estado:</strong> {{ pedido.estado.nome }}</h6></div>
+            <div class="col-md-3"><h6 class="card-title"><strong>Estado:</strong> {{ pedido.estadoPedido.nome }}</h6></div>
             <div class="col-md-3"><h6 class="card-title"><strong>Hora do Pedido:</strong> {{ pedido.dataDoPedido | date : 'HH:mm:ss' }}</h6></div><!-- 'dd/MM/y HH:mm:ss' -->
             <div class="col-md-2 botoespedido" style="padding: 0;">
-                <button *ngIf="pedido.estado.idEstado != estado.Finalizado" type="button" class="btn btn-dark mr-3 float-right">Cancelar</button>
-                <button *ngIf="pedido.estado.idEstado == estado.Cadastrado" type="button" class="btn btn-dark mr-3 float-right">Preparar</button>
-                <button *ngIf="pedido.estado.idEstado == estado.Preparando" type="button" class="btn btn-dark mr-3 float-right">Preparado</button>
-                <button *ngIf="pedido.estado.idEstado == estado.Preparado" type="button" class="btn btn-dark mr-3 float-right">Entregar</button>
-                <button *ngIf="pedido.estado.idEstado == estado.Entregando" type="button" class="btn btn-dark mr-3 float-right">Entregue</button>
-                <button *ngIf="pedido.estado.idEstado == estado.Entregue" type="button" class="btn btn-dark mr-3 float-right">Pago</button>
+                <button *ngIf="pedido.estadoPedidoId != e.Finalizado" type="button" class="btn btn-dark mr-3 float-right">Cancelar</button>
+                <button *ngIf="pedido.estadoPedidoId == e.Cadastrado" type="button" class="btn btn-dark mr-3 float-right">Preparar</button>
+                <button *ngIf="pedido.estadoPedidoId == e.Preparando" type="button" class="btn btn-dark mr-3 float-right">Preparado</button>
+                <button *ngIf="pedido.estadoPedidoId == e.Preparado" type="button" class="btn btn-dark mr-3 float-right">Entregar</button>
+                <button *ngIf="pedido.estadoPedidoId == e.Entregando" type="button" class="btn btn-dark mr-3 float-right">Entregue</button>
+                <button *ngIf="pedido.estadoPedidoId == e.Entregue" type="button" class="btn btn-dark mr-3 float-right">Pago</button>
             </div>
         </div>
         <table class="table table-bordered" style="table-layout:fixed;">

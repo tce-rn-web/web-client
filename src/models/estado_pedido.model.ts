@@ -1,12 +1,15 @@
 import { EstadoPedido as Estado } from '../enums/estado_pedido.enum';
+import { Pedido } from './pedido.model';
 
 export class EstadoPedido {
-    public idEstado: number
-    public nome: string
-
-    constructor(idEstado: number, nome?: string) {
-        this.idEstado = idEstado
-        this.nome = nome || Estado[idEstado]
+    constructor(
+        public pedido?: Pedido,
+        public id?: number,
+        public nome?: string
+    ) {
+        this.pedido = pedido || null
+        this.id = id || Estado.Cadastrado
+        this.nome = nome || Estado[id]
     }
 
     public static estado(id: number): string {
