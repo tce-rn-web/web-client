@@ -1,0 +1,24 @@
+<ng-template #template>
+    <div class="modal-header">
+        <h5 id="modalPost" class="modal-title pull-left">Login</h5>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="onClose()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3 pl-2 pr-2">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="exemplo@gmail.com" name="email" ngModel [(ngModel)]="app.usuario.email">
+                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3 pl-2 pr-2">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha" placeholder="Sua Senha" name="senha" ngModel [(ngModel)]="app.usuario.senha">
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dark" (click)="login()">Login</button>
+    </div>
+</ng-template>

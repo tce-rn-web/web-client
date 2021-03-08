@@ -1,0 +1,184 @@
+Eu estava pensando o sistema de acordo com os papéis dos funcionários, quando percebi que, em alguns restaurantes, o garçom quem cobra a conta, já em outros, tem um atendente para isso. Então pensei em não separar os tipos de funcionários, mas as funções deles
+No caso, os funcionários poderiam ter as funções:
+   - Cadastrar pedidos
+   - Cancelar pedidos
+   - Preparar pedidos
+   - Cobrar pedidos
+Daí o dono quem atribuiria as funções a eles
+-------------------------------------------------
+Nova Modelagem
+	Cargo {
+	    Id: int PK
+	    Descricao: string
+	    Usuarios: Usuario[]
+	}
+
+	EstadoPedido {
+	    Id: int PK
+	    Nome: string
+	    Pedidos: Pedido[]
+	}
+
+	Pedido {
+	    Id: int PK
+	    Mesa: string
+	    Descricao: string
+	    DataDoPedido: DateTime
+	    EstadoPedidoId: int FK(EstadoPedido)
+	    EstadoPedido: EstadoPedido
+	    PedidosPratos: PedidoPrato[]
+	}
+
+	PedidoPrato {
+	    PedidoId: int PK FK(Pedido)
+	    PratoId: int PK FK(Prato)
+	    Quantidade: int
+	    Pedido: Pedido
+	    Prato: Prato
+	}
+
+	Prato {
+	    Id: int PK
+	    Nome: string
+	    Preco: float
+	    PedidosPratos: PedidoPrato
+	}
+
+	Usuario {
+	    Id: int { get; set; }
+	    Email: string
+	    Senha: string
+	    Nome: string
+	    CargoId: int FK(Cargo)
+	    Cargo: Cargo
+	}
+
+Modelagem do Banco
+	pratos
+		campos
+			id
+			nome
+			preco
+
+	pedidos_pratos
+		campos
+			idPedido
+			idPrato
+			quantidade
+
+	pedidos
+		campos
+			id
+			mesa (string)
+			descricao
+			idEstado (int)
+			dataDoPedido (datatime)
+
+	estado_pedido
+		campos
+			idEstado
+			nome
+		tipos de estados
+			cadastrado = 1
+			cancelado  = 2
+			preparando = 3
+			preparado  = 4
+			entregando = 5
+			entregue   = 6
+			finalizado = 7
+
+	usuarios
+		campos
+			id
+			email
+			nome
+			senha
+
+	cargo
+		campos
+			idUsuario
+			nome
+
+	permissoes
+		campos
+			id
+			descricao
+
+		exemplos de permissões
+			cadastrar pedidos
+			cancelar pedidos
+			preparar pedidos
+			cobrar pedidos
+
+	usuarios_permissoes
+		campos
+			idUsuario
+			idPermissao
+
+	log
+		campos
+			id
+			idUsuario (int | NULL)
+			acao (string)
+			objeto (string | NULL)
+			campo (string | NULL)
+			valorAntigo (string | NULL)
+			valorNovo (string | NULL)
+			data (datatime)
+
+Telas
+	anonimo
+		Cadastro
+		Login
+		Sobre
+
+	funcionario
+		Cadastrar Pedido
+		Lista de Pedido (registrar ação)
+		Logout
+
+	dono
+		*Cadastrar Pratos
+		*Listar Pratos (editar/remover)
+		*Receitas
+		*Logs
+		Logout
+
+Consultas
+	Metódo: POST
+	Rota: api/cadastro
+	Parametros: Usuario
+
+	Metódo: POST
+	Rota: api/login
+	Parametros: Usuario
+
+	Metódo: GET
+	Rota: api/pedido/listar
+	Parametros: ?status
+
+	Metódo: POST
+	Rota: api/pedido/cadastrar
+	Parametros: Pedido
+
+	Metódo: PUT
+	Rota: api/pedido/editar
+	Parametros: Pedido
+
+	Metódo: DELETE
+	Rota: api/pedido/deletar
+	Parametros: Pedido
+-------------------------------------------------
+Requisitos
+	Área administrativa para gerenciar usuários
+	Rotas protegidas
+	Login/Logout
+	Montar as telas/menus do sistema de acordo com permissões
+	CRUD
+	Busca
+	Relatório
+	Logs
+	Fedback de erros e sucesso ao usário
+	Validação de formulário frontend
+	Validação de formulário backend
+	Responsividade

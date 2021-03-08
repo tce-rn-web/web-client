@@ -1,0 +1,7 @@
+<div class="row mb-3 pl-4 pr-4">
+    <select class="col-md-8" ngModel [(ngModel)]="prato.prato">
+        <option *ngFor="let prato of app.pratos" [ngValue]="prato">{{ prato.nome }}</option>
+    </select>
+    <input class="form-control col-md-2" type="number" placeholder="" value="1" ngModel [(ngModel)]="prato.quantidade">
+    <button type="button" class="btn btn-dark col-md-2" (click)="remover()">Remover</button>
+</div>
