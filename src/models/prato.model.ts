@@ -7,8 +7,8 @@ export class Prato {
         public nome?: string,
         public preco?: number
     ) {
-        this.pedidosPratos = pedidosPratos || null
-        this.id = id || Math.random()
+        this.pedidosPratos = null
+        this.id = id || 0
         this.nome = nome || null
         this.preco = preco || null
     }

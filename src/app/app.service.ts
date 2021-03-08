@@ -38,12 +38,14 @@ export class AppService {
 
   novoPedido(): Pedido {
     let pedido = new Pedido()
-    this.pedidos.unshift(pedido)
+    // this.pedidos.unshift(pedido)
     return pedido
   }
 
-  adicionarPrato(pedido: Pedido): void {
-    this.pedidos[this.pedidos.findIndex(x => x.id == pedido.id)].pedidosPratos.push(new PedidoPrato(pedido))
+  adicionarPrato(pedido: Pedido): Pedido {
+    // this.pedidos[this.pedidos.findIndex(x => x.id == pedido.id)].pedidosPratos.push(new PedidoPrato(pedido))
+    pedido.pedidosPratos.push(new PedidoPrato(pedido))
+    return pedido
   }
 
   removerPrato(prato: PedidoPrato): void {
@@ -56,8 +58,33 @@ export class AppService {
     EstadoPedido.setEstado(p, estado)
   }
 
-  cadastrarPedido(): void {
-    console.log('chegou no Service')
+  cadastrarPedido(pedido: Pedido): void {
+    console.log(pedido)
+
+    let options = {
+      headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') })
+    }
+
+    this.http.post<Pedido>(`${env.URL}/pedido/cadastrar`, pedido, options)
+      .subscribe(
+        (e: any) => {
+          console.log(e)
+          alert("Cadastrado com sucesso!")
+          this.router.navigate(['pedido/listar'])
+        },
+        (erro: any) => {
+          console.error(erro)
+
+          if (erro.status == '401' || erro.status == '0') {
+            alert("Sua seção expirou!")
+            this.permissao = "anonimo"
+            this.router.navigate(['login'])
+          }
+          else {
+            alert("Erro! Corrija os campos inválido.")
+          }
+        }
+      )
   }
 
   listar(): void {

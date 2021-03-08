@@ -12,12 +12,12 @@ export class Pedido {
         public estadoPedidoId?: number,
         public pedidosPratos?: PedidoPrato[],
     ) {
-        this.id = id || Math.random()
+        this.id = id || 0
         this.mesa = mesa || null
         this.descricao = descricao || null
         this.dataDoPedido = dataDoPedido || null
-        this.estadoPedido = estadoPedido || new EstadoPedido(this)
-        this.estadoPedidoId = estadoPedidoId || this.estadoPedido?.id
+        this.estadoPedido = estadoPedido || null
+        this.estadoPedidoId = estadoPedidoId || this.estadoPedido?.id || null
         this.pedidosPratos = pedidosPratos || [new PedidoPrato(this)]
     }
 

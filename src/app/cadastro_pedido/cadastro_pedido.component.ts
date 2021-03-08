@@ -54,10 +54,10 @@ export class CadastroPedidoComponent implements OnInit {
   }
 
   adicionar(): void {
-    this.app.adicionarPrato(this.pedido)
+    this.pedido = this.app.adicionarPrato(this.pedido)
   }
 
   cadastrar(): void {
-    this.app.cadastrarPedido()
+    this.app.cadastrarPedido(this.pedido)
   }
 }
