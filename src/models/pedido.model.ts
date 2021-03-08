@@ -46,8 +46,6 @@ export class Pedido {
         let novo = {
             'mesa': pedido.mesa,
             'descricao': pedido.descricao,
-            'estadoPedidoId': Estado.Cadastrado,
-            'estadoPedido': new EstadoPedido(null, Estado.Cadastrado, Estado[Estado.Cadastrado]),
             'pedidosPratos': []
         }
 

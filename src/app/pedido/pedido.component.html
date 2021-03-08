@@ -2,7 +2,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-md-4"><h5 class="card-title">Mesa {{ pedido?.mesa }}</h5></div>
-            <div class="col-md-3"><h6 class="card-title"><strong>Estado:</strong> {{ pedido?.estadoPedido?.nome }}</h6></div>
+            <div class="col-md-3"><h6 class="card-title"><strong>Estado:</strong> {{ pedido?.estadoPedido?.nome || e[pedido?.estadoPedidoId || 1] }}</h6></div>
             <div class="col-md-3"><h6 class="card-title"><strong>Hora do Pedido:</strong> {{ pedido?.dataDoPedido | date : 'HH:mm:ss' }}</h6></div><!-- 'dd/MM/y HH:mm:ss' -->
             <div class="col-md-2 botoespedido" style="padding: 0;">
                 <button *ngIf="pedido.estadoPedidoId != e.Finalizado && pedido.estadoPedidoId != e.Cancelado" type="button" class="btn btn-dark mr-3 float-right" (click)="acao(e.Cancelado)">Cancelar</button>
