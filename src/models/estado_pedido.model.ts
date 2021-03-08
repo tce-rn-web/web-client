@@ -15,4 +15,9 @@ export class EstadoPedido {
     public static estado(id: number): string {
         return Estado[id]
     }
+
+    public static setEstado(pedido: Pedido, estado: Estado): void {
+        pedido.estadoPedidoId = estado
+        pedido.estadoPedido = new EstadoPedido(pedido, estado, Estado[estado])
+    }
 }

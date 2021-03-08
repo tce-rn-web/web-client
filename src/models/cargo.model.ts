@@ -7,7 +7,7 @@ export class Cargo {
         public descricao?: string
     ) {
         this.usuario = usuario || null
-        this.id = id || Math.random()
+        this.id = id || null
         this.descricao = descricao || null
     }
 }

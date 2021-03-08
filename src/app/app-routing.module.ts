@@ -15,10 +15,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'pedidos/listar', component: PedidosComponent },
   { path: 'pedidos/cadastrar', component: CadastroPedidoComponent },
+  { path: 'logout', component: QuitComponent },
   { path: 'post', component: PostComponent },
   { path: 'friends', component: FriendsComponent },
   { path: 'sobre', component: SobreComponent },
-  { path: 'quit', component: QuitComponent }
 ];
 
 @NgModule({

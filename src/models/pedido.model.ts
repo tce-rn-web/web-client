@@ -21,21 +21,21 @@ export class Pedido {
         this.pedidosPratos = pedidosPratos || [new PedidoPrato(this)]
     }
 
-    qtdTotal(): number {
+    public static qtdTotal(pedido: Pedido): number {
         let qtd: number = 0
 
-        this.pedidosPratos.forEach((prato) => {
-            qtd += prato.quantidade
+        pedido?.pedidosPratos?.forEach((prato) => {
+            qtd += prato?.quantidade
         })
 
         return qtd
     }
 
-    precoTotal(): number {
+    public static precoTotal(pedido: Pedido): number {
         let preco: number = 0
 
-        this.pedidosPratos.forEach((prato) => {
-            preco += prato.quantidade * prato.prato.preco
+        pedido?.pedidosPratos?.forEach((prato) => {
+            preco += prato?.quantidade * prato?.prato?.preco
         })
 
         return preco

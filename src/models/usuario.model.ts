@@ -9,11 +9,11 @@ export class Usuario {
         public cargo?: Cargo,
         public cargoId?: number,
     ) {
-        this.id = id || Math.random()
+        this.id = id || 0
         this.email = email || null
         this.senha = senha || null
         this.nome = nome || null
-        this.cargo = cargo || new Cargo()
+        this.cargo = cargo || null
         this.cargoId = cargoId || this.cargo?.id
     }
 }

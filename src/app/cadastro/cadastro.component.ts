@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { AppService } from '../app.service';
+import { Usuario } from 'src/models/usuario.model';
 
 @Component({
   selector: 'app-cadastro',
@@ -45,6 +46,10 @@ export class CadastroComponent implements OnInit {
   onClose() {
     this.modalRef.hide()
     // this.location.back()
-    this.router.navigate(['about'])
+    this.router.navigate(['sobre'])
+  }
+
+  cadastrar(): void {
+    this.app.cadastrar(this.modalRef)
   }
 }

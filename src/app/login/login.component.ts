@@ -45,6 +45,10 @@ export class LoginComponent implements OnInit {
   onClose() {
     this.modalRef.hide()
     // this.location.back()
-    this.router.navigate(['about'])
+    this.router.navigate(['sobre'])
+  }
+
+  login(): void {
+    this.app.login(this.modalRef)
   }
 }

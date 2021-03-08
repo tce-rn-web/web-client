@@ -50,7 +50,7 @@ export class CadastroPedidoComponent implements OnInit {
   onClose(): void {
     this.modalRef.hide()
     // this.location.back()
-    this.router.navigate(['about'])
+    this.router.navigate(['pedidos/listar'])
   }
 
   adicionar(): void {
