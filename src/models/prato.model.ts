@@ -7,7 +7,7 @@ export class Prato {
         public nome?: string,
         public preco?: number
     ) {
-        this.pedidosPratos = null
+        this.pedidosPratos = pedidosPratos || null
         this.id = id || 0
         this.nome = nome || null
         this.preco = preco || null

@@ -49,6 +49,7 @@ export class AppService {
   }
 
   removerPrato(prato: PedidoPrato): void {
+    console.log(prato)
     let pedido = prato.pedido
     pedido.pedidosPratos = pedido.pedidosPratos.filter(x => x.pratoId != prato.pratoId)
   }
@@ -149,11 +150,11 @@ export class AppService {
       headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') })
     }
     
-    this.http.get<Pedido[]>(`${env.URL}/pedido/listar?incluirPratos=true`, options)
+    this.http.get<Prato[]>(`${env.URL}/prato/listar`, options)
       .subscribe(
-        (pedidos: Pedido[]) => {
+        (pratos: Prato[]) => {
           this.permissao = 'funcionario'
-          this.pedidos = pedidos
+          this.pratos = pratos
           modal?.hide()
           this.router.navigate(['pedidos/listar'])
         },

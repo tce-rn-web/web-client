@@ -17,7 +17,7 @@ export class Pedido {
         this.descricao = descricao || null
         this.dataDoPedido = dataDoPedido || null
         this.estadoPedido = estadoPedido || null
-        this.estadoPedidoId = estadoPedidoId || this.estadoPedido?.id || null
+        this.estadoPedidoId = estadoPedidoId || this.estadoPedido?.id || 0
         this.pedidosPratos = pedidosPratos || [new PedidoPrato(this)]
     }
 

@@ -138,7 +138,6 @@ Telas
 		Logout
 
 	dono
-		Cadastrar Funcionário
 		*Cadastrar Pratos
 		*Listar Pratos (editar/remover)
 		*Receitas

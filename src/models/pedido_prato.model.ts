@@ -10,10 +10,10 @@ export class PedidoPrato {
         public pratoId?: number,
         public quantidade?: number,
     ) {
-        this.pedido = null
-        this.pedidoId = pedidoId || this.pedido?.id || null
+        this.pedido = pedido || null
+        this.pedidoId = pedidoId || this.pedido?.id || 0
         this.quantidade = quantidade || 1
         this.prato = prato || null
-        this.pratoId = pratoId || 0
+        this.pratoId = pratoId || this.prato?.id || 0
     }
 }

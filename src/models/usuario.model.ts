@@ -13,7 +13,7 @@ export class Usuario {
         this.email = email || null
         this.senha = senha || null
         this.nome = nome || null
-        this.cargo = cargo || null
-        this.cargoId = cargoId || this.cargo?.id
+        this.cargo = cargo || new Cargo()
+        this.cargoId = cargoId || this.cargo?.id || 0
     }
 }
