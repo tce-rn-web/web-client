@@ -58,6 +58,36 @@ export class AppService {
   acao(pedido: Pedido, estado: E): void {
     let p = this.pedidos[this.pedidos.findIndex(x => x.id == pedido.id)]
     EstadoPedido.setEstado(p, estado)
+    this.alterarPedido(p)
+  }
+
+  alterarPedido(pedido: Pedido): void {
+    pedido = Pedido.DTO(pedido)
+
+    let options = {
+      headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') })
+    }
+
+    this.http.put<Pedido>(`${env.URL}/pedido/${pedido.id}/editar`, pedido, options)
+      .subscribe(
+        (e: any) => {
+          console.log(e)
+          // alert("Estado alterado com sucesso!")
+          this.listar()
+        },
+        (erro: any) => {
+          console.error(erro)
+
+          if (erro.status == '401' || erro.status == '0') {
+            alert("Sua seção expirou!")
+            this.permissao = "anonimo"
+            this.router.navigate(['login'])
+          }
+          else {
+            alert("Erro! Corrija os campos inválido.")
+          }
+        }
+      )
   }
 
   cadastrarPedido(pedido: Pedido, modal?: any): void {

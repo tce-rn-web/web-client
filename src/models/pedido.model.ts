@@ -44,8 +44,10 @@ export class Pedido {
 
     public static DTO(pedido: Pedido): Pedido {
         let novo = {
+            'id': pedido.id || 0,
             'mesa': pedido.mesa,
             'descricao': pedido.descricao,
+            'estadoPedidoId': pedido.estadoPedidoId || Estado.Cadastrado,
             'pedidosPratos': []
         }
 
