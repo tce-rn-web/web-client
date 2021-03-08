@@ -13,6 +13,7 @@ export class QuitComponent implements OnInit {
 
   ngOnInit(): void {
     this.app.permissao = 'anonimo'
+    localStorage.removeItem('token')
     this.router.navigate(['sobre'])
   }
 
