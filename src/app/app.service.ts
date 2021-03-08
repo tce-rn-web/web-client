@@ -71,6 +71,9 @@ export class AppService {
         },
         (erro: any) => {
           console.log(erro);
+          alert("Sua seção expirou!")
+          this.permissao = "anonimo"
+          this.router.navigate(['login'])
         }
       )
   }
@@ -86,6 +89,7 @@ export class AppService {
         },
         (erro: any) => {
           console.error(erro)
+          alert("Erro! Corrija os campos inválido.")
         }
       )
   }
@@ -103,6 +107,7 @@ export class AppService {
         },
         (erro: any) => {
           console.error(erro)
+          alert("Erro! Corrija os campos inválido.")
         }
       )
   }
