@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppService } from '../app.service';
 
 @Component({
@@ -8,10 +9,14 @@ import { AppService } from '../app.service';
 })
 export class SobreComponent implements OnInit {
 
-  constructor(public app: AppService) { }
+  constructor(
+    public router: Router,
+    public app: AppService
+  ) { }
 
   ngOnInit(): void {
     this.app.last = 'sobre'
+    this.app.autenticar()
   }
 
 }

@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
     }
 
     this.modalRef = this.modalService.show(this.template, config)
+    setTimeout(() => this.app.autenticar(this.modalRef), 100)
   }
 
   onClose() {

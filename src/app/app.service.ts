@@ -71,6 +71,7 @@ export class AppService {
     this.http.get<Pedido[]>(`${env.URL}/pedido/listar?incluirPratos=true`, options)
       .subscribe(
         (pedidos: Pedido[]) => {
+          this.permissao = 'funcionario'
           this.pedidos = pedidos
         },
         (erro: any) => {
@@ -107,11 +108,31 @@ export class AppService {
           localStorage.setItem('token', e.token)
           alert("Logado com sucesso!")
           modal.hide()
-          this.router.navigate(['sobre'])
+          this.router.navigate(['pedidos/listar'])
         },
         (erro: any) => {
           console.error(erro)
           alert("Erro! Corrija os campos inválido.")
+        }
+      )
+  }
+
+  autenticar(modal?: any): void {
+    let options = {
+      headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') })
+    }
+    
+    this.http.get<Pedido[]>(`${env.URL}/pedido/listar?incluirPratos=true`, options)
+      .subscribe(
+        (pedidos: Pedido[]) => {
+          this.permissao = 'funcionario'
+          this.pedidos = pedidos
+          modal?.hide()
+          this.router.navigate(['pedidos/listar'])
+        },
+        (erro: any) => {
+          console.log(erro);
+          this.permissao = "anonimo"
         }
       )
   }
