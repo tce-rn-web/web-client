@@ -51,7 +51,7 @@ export class AppService {
   removerPrato(prato: PedidoPrato): void {
     console.log(prato)
     let pedido = prato.pedido
-    pedido.pedidosPratos = pedido.pedidosPratos.filter(x => x.pratoId != prato.pratoId)
+    pedido.pedidosPratos = pedido.pedidosPratos.filter(x => x.code != prato.code)
   }
 
   acao(pedido: Pedido, estado: E): void {

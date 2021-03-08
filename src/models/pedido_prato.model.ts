@@ -9,11 +9,13 @@ export class PedidoPrato {
         public prato?: Prato,
         public pratoId?: number,
         public quantidade?: number,
+        public code?: number,
     ) {
         this.pedido = pedido || null
         this.pedidoId = pedidoId || this.pedido?.id || 0
         this.quantidade = quantidade || 1
         this.prato = prato || null
         this.pratoId = pratoId || this.prato?.id || 0
+        this.code = code || Math.random()
     }
 }
