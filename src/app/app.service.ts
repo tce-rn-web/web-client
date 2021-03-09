@@ -10,15 +10,18 @@ import { EstadoPedido } from 'src/models/estado_pedido.model';
 import { PedidoPrato } from 'src/models/pedido_prato.model';
 import { Usuario } from 'src/models/usuario.model';
 import { Router } from '@angular/router';
+import { Cargo } from 'src/enums/cargo.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
   last: string = 'login'
-  permissao: string = 'anonimo'
+  cargo: number = Cargo.Anonimo
   usuario: Usuario = new Usuario()
-  pratos: Prato[] = [
+  pratos: Prato[]
+  pedidos: Pedido[]
+  /* pratos: Prato[] = [
     new Prato(null, null, 'Pastel', 2.00),
     new Prato(null, null, 'Bolo', 15.00),
     new Prato(null, null, 'Suco de Uva', 3.00),
@@ -29,7 +32,7 @@ export class AppService {
     new Pedido(null, '02', '', '2002/02/11', new EstadoPedido(null, E.Entregando), null),
     new Pedido(),
     new Pedido(),
-  ]
+  ] */
 
   constructor(
     public router: Router,
@@ -80,7 +83,7 @@ export class AppService {
 
           if (erro.status == '401' || erro.status == '0') {
             alert("Sua seção expirou!")
-            this.permissao = "anonimo"
+            this.cargo = Cargo.Anonimo
             this.router.navigate(['login'])
           }
           else {
@@ -112,11 +115,11 @@ export class AppService {
 
           if (erro.status == '401' || erro.status == '0') {
             alert("Sua seção expirou!")
-            this.permissao = "anonimo"
+            this.cargo = Cargo.Anonimo
             this.router.navigate(['login'])
           }
           else {
-            alert("Erro! Corrija os campos inválido.")
+            alert('Erro! ' + (erro.error || 'Um erro desconhecido ocorreu.'))
           }
         }
       )
@@ -133,13 +136,13 @@ export class AppService {
     this.http.get<Pedido[]>(`${env.URL}/pedido/listar?incluirPratos=true`, options)
       .subscribe(
         (pedidos: Pedido[]) => {
-          this.permissao = 'funcionario'
+          this.cargo = parseInt(localStorage.getItem('cargo')) || Cargo.Anonimo
           this.pedidos = pedidos
         },
         (erro: any) => {
           console.log(erro);
           alert("Sua seção expirou!")
-          this.permissao = "anonimo"
+          this.cargo = Cargo.Anonimo
           this.router.navigate(['login'])
         }
       )
@@ -156,7 +159,7 @@ export class AppService {
         },
         (erro: any) => {
           console.error(erro)
-          alert("Erro! Corrija os campos inválido.")
+          alert('Erro! ' + (erro.error || 'Um erro desconhecido ocorreu.'))
         }
       )
   }
@@ -165,16 +168,31 @@ export class AppService {
     this.http.post<Usuario>(`${env.URL}/login`, this.usuario)
       .subscribe(
         (e: any) => {
-          this.permissao = 'funcionario'
           console.log(e)
-          localStorage.setItem('token', e.token)
-          alert("Logado com sucesso!")
-          modal.hide()
-          this.router.navigate(['pedidos/listar'])
+
+          if (e.autenticado) {
+            localStorage.setItem('token', e.token)
+            localStorage.setItem('cargo', e.cargoId)
+            this.cargo = parseInt(e.cargoId) || Cargo.Anonimo
+            alert("Logado com sucesso!")
+            modal.hide()
+
+            if (this.cargo == Cargo.Dono) {
+              this.router.navigate(['pratos/listar'])
+            }
+            else {
+              this.router.navigate(['pedidos/listar'])
+            }
+          }
+          else {
+            this.cargo = Cargo.Anonimo
+            alert('Erro! ' + (e.mensagem || 'Um erro desconhecido ocorreu.'))
+          }
         },
         (erro: any) => {
           console.error(erro)
-          alert("Erro! Corrija os campos inválido.")
+          this.cargo = Cargo.Anonimo
+          alert('Erro! ' + (erro.error || 'Um erro desconhecido ocorreu.'))
         }
       )
   }
@@ -187,15 +205,22 @@ export class AppService {
     this.http.get<Prato[]>(`${env.URL}/prato/listar`, options)
       .subscribe(
         (pratos: Prato[]) => {
-          this.permissao = 'funcionario'
+          this.cargo = parseInt(localStorage.getItem('cargo')) || Cargo.Anonimo
           this.pratos = pratos
           modal?.hide()
           this.router.navigate(['pedidos/listar'])
         },
         (erro: any) => {
           console.log(erro);
-          this.permissao = "anonimo"
+          this.cargo = Cargo.Anonimo
         }
       )
+  }
+
+  quit(): void {
+    this.cargo = Cargo.Anonimo
+    localStorage.removeItem('token')
+    localStorage.removeItem('cargo')
+    this.router.navigate(['sobre'])
   }
 }

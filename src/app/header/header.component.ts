@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Cargo } from 'src/enums/cargo.enum';
 import { AppService } from '../app.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { AppService } from '../app.service';
 export class HeaderComponent implements OnInit {
 	isCollapsed: boolean = true
   titulo: string = 'Restaurante'
+  c = Cargo
 
   constructor(public app: AppService) { }
 
