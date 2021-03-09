@@ -22,10 +22,16 @@
             <a class="nav-link" routerLink="pedidos/cadastrar" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Cadastrar Pedido</a>
           </li>
           <li class="nav-item" *ngIf="app.cargo == c.Dono">
-            <a class="nav-link" routerLink="prato/listar" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Listar Pratos</a>
+            <a class="nav-link" routerLink="pratos/listar" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Listar Pratos</a>
           </li>
           <li class="nav-item" *ngIf="app.cargo == c.Dono">
-            <a class="nav-link" routerLink="prato/cadastrar" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Cadastrar Pratos</a>
+            <a class="nav-link" routerLink="pratos/cadastrar" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Cadastrar Pratos</a>
+          </li>
+          <li class="nav-item" *ngIf="app.cargo == c.Dono">
+            <a class="nav-link" routerLink="gerencia" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Gerenciar Usuários</a>
+          </li>
+          <li class="nav-item" *ngIf="app.cargo == c.Dono">
+            <a class="nav-link" routerLink="graficos" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Gráficos</a>
           </li>
           <li class="nav-item" *ngIf="app.cargo == c.Dono">
             <a class="nav-link" routerLink="logs" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Logs</a>

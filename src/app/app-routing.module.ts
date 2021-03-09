@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'sobre', component: SobreComponent },
   { path: 'pedidos/listar', component: PedidosComponent },
   { path: 'pedidos/cadastrar', component: CadastroPedidoComponent },
-  { path: 'prato/listar', component: PratoListarComponent },
+  { path: 'pratos/listar', component: PratoListarComponent },
   { path: 'logout', component: QuitComponent },
 ];
 

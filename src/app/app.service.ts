@@ -108,7 +108,13 @@ export class AppService {
           alert("Cadastrado com sucesso!")
           modal?.hide()
           this.listar()
-          this.router.navigate(['pedidos/listar'])
+          
+          if (this.cargo == Cargo.Dono) {
+            this.router.navigate(['pratos/listar'])
+          }
+          else {
+            this.router.navigate(['pedidos/listar'])
+          }
         },
         (erro: any) => {
           console.error(erro)
@@ -208,7 +214,13 @@ export class AppService {
           this.cargo = parseInt(localStorage.getItem('cargo')) || Cargo.Anonimo
           this.pratos = pratos
           modal?.hide()
-          this.router.navigate(['pedidos/listar'])
+          
+          if (this.cargo == Cargo.Dono) {
+            this.router.navigate(['pratos/listar'])
+          }
+          else {
+            this.router.navigate(['pedidos/listar'])
+          }
         },
         (erro: any) => {
           console.log(erro);

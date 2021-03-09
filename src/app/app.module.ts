@@ -22,6 +22,7 @@ import { PedidoComponent } from './pedido/pedido.component';
 import { CadastroPedidoComponent } from './cadastro_pedido/cadastro_pedido.component';
 import { PratoComponent } from './prato/prato.component';
 import { PratoListarComponent } from './pratolistar/pratolistar.component';
+import { PratoCardComponent } from './pratocard/pratocard.component';
 import { QuitComponent } from './quit/quit.component';
 import { UserComponent } from './user/user.component';
 import { PostComponent } from './post/post.component';
@@ -38,6 +39,7 @@ import { PostComponent } from './post/post.component';
     CadastroPedidoComponent,
     PratoComponent,
     PratoListarComponent,
+    PratoCardComponent,
     QuitComponent,
     UserComponent,
     PostComponent
