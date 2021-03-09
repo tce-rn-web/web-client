@@ -6,34 +6,31 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav" [ngClass]="{'show': !isCollapsed}">
         <ul class="navbar-nav">
-          <li class="nav-item" *ngIf="app.permissao == 'anonimo'">
+          <li class="nav-item" *ngIf="app.cargo == c.Anonimo">
             <a class="nav-link" routerLink="cadastro" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Cadastro</a>
           </li>
-          <li class="nav-item" *ngIf="app.permissao == 'anonimo'">
+          <li class="nav-item" *ngIf="app.cargo == c.Anonimo">
             <a class="nav-link" routerLink="login" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Login</a>
           </li>
-          <li class="nav-item" *ngIf="app.permissao == 'anonimo'">
+          <li class="nav-item" *ngIf="app.cargo == c.Anonimo">
             <a class="nav-link" routerLink="sobre" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Sobre</a>
           </li>
-          <li class="nav-item" *ngIf="app.permissao == 'funcionario'">
+          <li class="nav-item" *ngIf="app.cargo == c.Funcionario">
             <a class="nav-link" routerLink="pedidos/listar" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Lista de Pedidos</a>
           </li>
-          <li class="nav-item" *ngIf="app.permissao == 'funcionario'">
+          <li class="nav-item" *ngIf="app.cargo == c.Funcionario">
             <a class="nav-link" routerLink="pedidos/cadastrar" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Cadastrar Pedido</a>
           </li>
-          <li class="nav-item" *ngIf="app.permissao == 'dono'">
-            <a class="nav-link" routerLink="cadastro" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Cadastrar Funcionário</a>
-          </li>
-          <li class="nav-item" *ngIf="app.permissao == 'dono'">
-            <a class="nav-link" routerLink="prato/cadastrar" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Cadastrar Pratos</a>
-          </li>
-          <li class="nav-item" *ngIf="app.permissao == 'dono'">
+          <li class="nav-item" *ngIf="app.cargo == c.Dono">
             <a class="nav-link" routerLink="prato/listar" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Listar Pratos</a>
           </li>
-          <li class="nav-item" *ngIf="app.permissao == 'dono'">
+          <li class="nav-item" *ngIf="app.cargo == c.Dono">
+            <a class="nav-link" routerLink="prato/cadastrar" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Cadastrar Pratos</a>
+          </li>
+          <li class="nav-item" *ngIf="app.cargo == c.Dono">
             <a class="nav-link" routerLink="logs" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Logs</a>
           </li>
-          <li class="nav-item" *ngIf="app.permissao != 'anonimo'">
+          <li class="nav-item" *ngIf="app.cargo != c.Anonimo">
             <a class="nav-link" routerLink="logout" routerLinkActive="active" (click)="isCollapsed = !isCollapsed">Logout</a>
           </li>
         </ul>
