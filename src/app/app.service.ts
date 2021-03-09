@@ -169,12 +169,25 @@ export class AppService {
       .subscribe(
         (e: any) => {
           console.log(e)
-          localStorage.setItem('token', e.token)
-          localStorage.setItem('cargo', e.cargoId)
-          this.cargo = parseInt(e.cargoId) || Cargo.Anonimo
-          alert("Logado com sucesso!")
-          modal.hide()
-          this.router.navigate(['pedidos/listar'])
+
+          if (e.autenticado) {
+            localStorage.setItem('token', e.token)
+            localStorage.setItem('cargo', e.cargoId)
+            this.cargo = parseInt(e.cargoId) || Cargo.Anonimo
+            alert("Logado com sucesso!")
+            modal.hide()
+
+            if (this.cargo == Cargo.Dono) {
+              this.router.navigate(['pratos/listar'])
+            }
+            else {
+              this.router.navigate(['pedidos/listar'])
+            }
+          }
+          else {
+            this.cargo = Cargo.Anonimo
+            alert('Erro! ' + (e.mensagem || 'Um erro desconhecido ocorreu.'))
+          }
         },
         (erro: any) => {
           console.error(erro)
