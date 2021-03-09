@@ -1,40 +1,15 @@
-<div class="card mt-4">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-4"><h5 class="card-title">Mesa {{ pedido?.mesa }}</h5></div>
-            <div class="col-md-3"><h6 class="card-title"><strong>Estado:</strong> {{ pedido?.estadoPedido?.nome || e[pedido?.estadoPedidoId || 1] }}</h6></div>
-            <div class="col-md-3"><h6 class="card-title"><strong>Hora do Pedido:</strong> {{ pedido?.dataDoPedido | date : 'HH:mm:ss' }}</h6></div><!-- 'dd/MM/y HH:mm:ss' -->
-            <div class="col-md-2 botoespedido" style="padding: 0;">
-                <button *ngIf="pedido.estadoPedidoId != e.Finalizado && pedido.estadoPedidoId != e.Cancelado" type="button" class="btn btn-dark mr-3 float-right" (click)="acao(e.Cancelado)">Cancelar</button>
-                <button *ngIf="pedido.estadoPedidoId == e.Cadastrado" type="button" class="btn btn-dark mr-3 float-right" (click)="acao(e.Preparando)">Preparar</button>
-                <button *ngIf="pedido.estadoPedidoId == e.Preparando" type="button" class="btn btn-dark mr-3 float-right" (click)="acao(e.Preparado)">Preparado</button>
-                <button *ngIf="pedido.estadoPedidoId == e.Preparado" type="button" class="btn btn-dark mr-3 float-right" (click)="acao(e.Entregando)">Entregar</button>
-                <button *ngIf="pedido.estadoPedidoId == e.Entregando" type="button" class="btn btn-dark mr-3 float-right" (click)="acao(e.Entregue)">Entregue</button>
-                <button *ngIf="pedido.estadoPedidoId == e.Entregue" type="button" class="btn btn-dark mr-3 float-right" (click)="acao(e.Finalizado)">Pago</button>
-            </div>
+
+<div class="card mb-3" style="width:100%;">
+    <div class="row g-0">
+      <div class="col-md-1">
+        <img src="/assets/prato.png" alt="prato" style="height: 80px; padding: 15px 0 0 15px;">
+      </div>
+      <div class="col-md-11">
+        <div class="card-body">
+          <h5 class="card-title">{{ prato.nome }}</h5>
+          <p class="card-text">{{ prato.preco | currency : 'BRL' }}</p>
+          <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
         </div>
-        <table class="table table-bordered" style="table-layout:fixed;">
-            <thead>
-                <tr>
-                    <th scope="col" colspan="4">Nome</th>
-                    <th scope="col" colspan="2">Preço</th>
-                    <th scope="col" colspan="2">Quantidade</th>
-                    <th scope="col" colspan="2">Preço Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let prato of pedido.pedidosPratos" [prato]="prato">
-                    <td colspan="4">{{ prato?.prato?.nome }}</td>
-                    <td colspan="2">{{ prato?.prato?.preco | currency : 'BRL' }}</td>
-                    <td colspan="2">{{ prato?.quantidade }}</td>
-                    <td colspan="2">{{ prato?.quantidade * prato?.prato?.preco | currency : 'BRL' }}</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <th scope="col" colspan="6">Total</th>
-                <th scope="col" colspan="2">{{ p.qtdTotal(pedido) }}</th>
-                <th scope="col" colspan="2">{{ p.precoTotal(pedido) | currency : 'BRL' }}</th>
-            </tfoot>
-        </table>
+      </div>
     </div>
-</div>
+  </div>

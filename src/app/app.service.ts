@@ -108,7 +108,51 @@ export class AppService {
           alert("Cadastrado com sucesso!")
           modal?.hide()
           this.listar()
-          this.router.navigate(['pedidos/listar'])
+          
+          if (this.cargo == Cargo.Dono) {
+            this.router.navigate(['pratos/listar'])
+          }
+          else {
+            this.router.navigate(['pedidos/listar'])
+          }
+        },
+        (erro: any) => {
+          console.error(erro)
+
+          if (erro.status == '401' || erro.status == '0') {
+            alert("Sua seção expirou!")
+            this.cargo = Cargo.Anonimo
+            this.router.navigate(['login'])
+          }
+          else {
+            alert('Erro! ' + (erro.error || 'Um erro desconhecido ocorreu.'))
+          }
+        }
+      )
+  }
+
+  cadastrarPrato(prato: Prato, modal?: any): void {
+    prato = Prato.DTO(prato)
+    console.log(prato)
+
+    let options = {
+      headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') })
+    }
+
+    this.http.post<Prato>(`${env.URL}/prato/cadastrar`, prato, options)
+      .subscribe(
+        (e: any) => {
+          console.log(e)
+          alert("Cadastrado com sucesso!")
+          modal?.hide()
+          this.autenticar()
+          
+          if (this.cargo == Cargo.Dono) {
+            this.router.navigate(['pratos/listar'])
+          }
+          else {
+            this.router.navigate(['pratos/listar'])
+          }
         },
         (erro: any) => {
           console.error(erro)
@@ -208,7 +252,13 @@ export class AppService {
           this.cargo = parseInt(localStorage.getItem('cargo')) || Cargo.Anonimo
           this.pratos = pratos
           modal?.hide()
-          this.router.navigate(['pedidos/listar'])
+          
+          if (this.cargo == Cargo.Dono) {
+            this.router.navigate(['pratos/listar'])
+          }
+          else {
+            this.router.navigate(['pedidos/listar'])
+          }
         },
         (erro: any) => {
           console.log(erro);

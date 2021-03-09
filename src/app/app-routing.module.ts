@@ -6,6 +6,7 @@ import { SobreComponent } from './sobre/sobre.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { CadastroPedidoComponent } from './cadastro_pedido/cadastro_pedido.component';
 import { PratoListarComponent } from './pratolistar/pratolistar.component';
+import { PratoCadastrarComponent } from './pratocadastrar/pratocadastrar.component';
 import { PostComponent } from './post/post.component';
 import { QuitComponent } from './quit/quit.component';
 
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'sobre', component: SobreComponent },
   { path: 'pedidos/listar', component: PedidosComponent },
   { path: 'pedidos/cadastrar', component: CadastroPedidoComponent },
-  { path: 'prato/listar', component: PratoListarComponent },
+  { path: 'pratos/listar', component: PratoListarComponent },
+  { path: 'pratos/cadastrar', component: PratoCadastrarComponent },
   { path: 'logout', component: QuitComponent },
 ];
 

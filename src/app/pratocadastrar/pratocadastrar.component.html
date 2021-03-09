@@ -1,0 +1,24 @@
+<ng-template #template>
+    <div class="modal-header">
+        <h5 id="modalPost" class="modal-title pull-left">Cadastro de Prato</h5>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="onClose()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="mb-3 pl-2 pr-2">
+                <label for="mesa" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" aria-describedby="nomeHelp" placeholder="" name="nome" ngModel [(ngModel)]="prato.nome">
+                <!-- <div id="nomeHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+            </div>
+            <div class="mb-3 pl-2 pr-2">
+                <label class="form-label">Preço</label>
+                <input type="text" class="form-control" id="preco" aria-describedby="nomeHelp" placeholder="" name="preco" ngModel [(ngModel)]="prato.preco">
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-dark" (click)="cadastrar()">Cadastrar</button>
+    </div>
+</ng-template>
