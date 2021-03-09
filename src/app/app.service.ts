@@ -131,6 +131,44 @@ export class AppService {
       )
   }
 
+  cadastrarPrato(prato: Prato, modal?: any): void {
+    prato = Prato.DTO(prato)
+    console.log(prato)
+
+    let options = {
+      headers: new HttpHeaders({ 'Authorization': 'Bearer ' + localStorage.getItem('token') })
+    }
+
+    this.http.post<Prato>(`${env.URL}/prato/cadastrar`, prato, options)
+      .subscribe(
+        (e: any) => {
+          console.log(e)
+          alert("Cadastrado com sucesso!")
+          modal?.hide()
+          this.autenticar()
+          
+          if (this.cargo == Cargo.Dono) {
+            this.router.navigate(['pratos/listar'])
+          }
+          else {
+            this.router.navigate(['pratos/listar'])
+          }
+        },
+        (erro: any) => {
+          console.error(erro)
+
+          if (erro.status == '401' || erro.status == '0') {
+            alert("Sua seção expirou!")
+            this.cargo = Cargo.Anonimo
+            this.router.navigate(['login'])
+          }
+          else {
+            alert('Erro! ' + (erro.error || 'Um erro desconhecido ocorreu.'))
+          }
+        }
+      )
+  }
+
   listar(): void {
     // this.pedidos.push(new Pedido(1, '01', 'desc', [new PedidoPrato(23, 245, new Prato(10, 'Pastel', 2.00), 3), new PedidoPrato(null, null, new Prato(10, 'Açai', 5.00), 7)], new EstadoPedido(Estado.Cadastrado), '2000-01-08 08:32:12.000000'))
     // this.pedidos.push(new Pedido(1, '14', 'desc', [new PedidoPrato(null, null, new Prato(10, 'Suco de Laranja', 3.50), 1), new PedidoPrato(null, null, new Prato(10, 'Bolo', 15.99), 3)], new EstadoPedido(Estado.Entregue), '2000-10-07 04:26:57'))

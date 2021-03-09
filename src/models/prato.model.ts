@@ -12,4 +12,13 @@ export class Prato {
         this.nome = nome || null
         this.preco = preco || null
     }
+
+    public static DTO(prato: Prato): Prato {
+        let p = {
+            'nome': prato?.nome,
+            'preco': prato?.preco
+        }
+
+        return p
+    }
 }
